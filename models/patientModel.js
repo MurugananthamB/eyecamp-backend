@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
+const Counter = require("./createModel");
 
 const patientSchema = new mongoose.Schema({
+  regNo: { type: Number, unique: true }, // Auto-generated registration number
   title: { type: String, required: true },
   patientName: { type: String, required: true },
   fatherOrCO: { type: String, required: true },
@@ -55,6 +57,19 @@ const patientSchema = new mongoose.Schema({
     },
   },
   referredBy: { type: String },
+});
+
+// Pre-save hook to auto-generate regNo
+patientSchema.pre("save", async function (next) {
+  if (!this.regNo) {
+    const counter = await Counter.findByIdAndUpdate(
+      { _id: "patientRegNo" }, // Identifier for the counter
+      { $inc: { sequence_value: 1 } }, // Increment the sequence value
+      { new: true, upsert: true } // Create the counter if it doesn't exist
+    );
+    this.regNo = counter.sequence_value; // Assign the incremented value to regNo
+  }
+  next();
 });
 
 module.exports = mongoose.model("Patient", patientSchema);
