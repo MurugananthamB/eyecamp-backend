@@ -4,6 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const connectDB = require("./config/db"); // Import DB connection
 const userRoutes = require("./routes/userRoutes");
+const patientRoutes = require("./routes/patientRoutes"); // Import patient routes
 const https = require("https");
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 
 // ✅ Routes
 app.use("/api/users", userRoutes);
+app.use("/api/patients", patientRoutes); // Patient-related routes
 
 // ✅ Default Route
 app.get("/", (req, res) => {
