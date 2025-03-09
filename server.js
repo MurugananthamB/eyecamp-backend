@@ -15,6 +15,7 @@ connectDB();
 // ✅ Middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.json()); // Ensure JSON parsing
 
 // ✅ Routes
 app.use("/api/users", userRoutes);
@@ -25,8 +26,13 @@ app.get("/", (req, res) => {
   res.send("Welcome to APH EYE CAMP API");
 });
 
+// ✅ Handle 404 (Undefined Routes)
+app.use((req, res, next) => {
+  res.status(404).json({ message: "Route not found" });
+});
+
 // ✅ Keep Server Awake (Only for free-tier Render)
-const SERVER_URL = process.env.SERVER_URL; // Get from environment
+const SERVER_URL = process.env.SERVER_URL || ""; // Fallback to prevent undefined errors
 if (SERVER_URL) {
   setInterval(() => {
     https
@@ -36,7 +42,7 @@ if (SERVER_URL) {
       .on("error", (err) => {
         console.error("⚠️ Keep-alive request failed:", err.message);
       });
-  }, 2 * 60 * 1000); // Every 5 minutes
+  }, 2 * 60 * 1000); // Every 2 minutes
 }
 
 // ✅ Start Server
