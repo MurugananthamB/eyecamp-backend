@@ -20,6 +20,7 @@ const patientSchema = new mongoose.Schema({
   ownGlasses: { type: String },
   procedureName: { type: String },
   surgeonName: { type: String },
+  dateOfDischarge: { type: Date },
   diagnosis: { type: String },
   registrationDateTime: { type: Date },
   otDateTime: {
