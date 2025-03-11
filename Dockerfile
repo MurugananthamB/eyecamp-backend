@@ -16,5 +16,5 @@ COPY . .
 # Expose the port (make sure it matches the one used in server.js)
 EXPOSE 5000
 
-# Use Nodemon in development, otherwise just run the server
-CMD ["node", "server.js"]
+# Use nodemon for live reload
+CMD ["npx", "nodemon", "server.js"]

@@ -23,6 +23,7 @@ const parseDate = (dateString) => {
 const submitPatientData = async (req, res) => {
   try {
     const {
+      regNo,
       title,
       patientName,
       fatherOrCO,
@@ -68,6 +69,7 @@ const submitPatientData = async (req, res) => {
 
     // Create a new patient record
     const newPatient = new Patient({
+      regNo,
       title,
       patientName,
       fatherOrCO,
