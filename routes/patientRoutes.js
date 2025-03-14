@@ -4,15 +4,19 @@ const {
   submitPatientData,
   getAllPatients,
   getPatientDetails,
+  checkRegNo, // ✅ Ensure this function is implemented in patientController.js
 } = require("../controllers/patientController");
 
-// POST /pts-dts - Submit patient data
+// ✅ POST /api/patients - Submit patient data
 router.post("/", submitPatientData);
 
-// GET /api/patients - Get all patient data
+// ✅ GET /api/patients - Get all patient data
 router.get("/", getAllPatients);
 
-// GET /api/patients/:patientId - Get patient details by ID
+// ✅ GET /api/patients/checkRegNo/:regNo - Check if a regNo exists
+router.get("/checkRegNo/:regNo", checkRegNo);
+
+// ✅ GET /api/patients/:regNo - Get patient details by regNo
 router.get("/:regNo", getPatientDetails);
 
 module.exports = router;
