@@ -15,7 +15,7 @@
 ---
 
 ## 📂 **Project Structure**
-\`\`\`
+```sh
 eyecamp-backend/
 │── config/          # Configuration files (DB, JWT, etc.)
 │── controllers/     # API Controllers
@@ -27,39 +27,39 @@ eyecamp-backend/
 │── package.json    # Node Dependencies
 │── server.js       # Entry Point
 └── README.md       # Project Documentation
-\`\`\`
+```
 
 ---
 
 ## 🔧 **Installation & Setup**
 
 ### 1️⃣ Clone the Repository
-\`\`\`bash
+```sh
 git clone https://github.com/MurugananthamB/eyecamp-backend.git
 cd eyecamp-backend
-\`\`\`
+```
 
 ### 2️⃣ Install Dependencies
-\`\`\`bash
+```sh
 npm install
-\`\`\`
+```
 
 ### 3️⃣ Set Up Environment Variables
 Create a \`.env\` file in the root directory and add:
-\`\`\`
+```sh
 MONGO_URI="your_mongodb_connection_string"
 JWT_SECRET="your_secret_key"
 PORT=5000
-\`\`\`
+```
 
 ### 4️⃣ Run the Server
-\`\`\`bash
+```sh
 npm start
-\`\`\`
+```
 or use Nodemon for development:
-\`\`\`bash
+```sh
 npm run dev
-\`\`\`
+```
 🟢 Server will be running at **http://localhost:5000/**
 
 ---
@@ -72,16 +72,14 @@ npm run dev
 | \`GET\` | \`/api/patients\` | Get all patient records |
 | \`POST\` | \`/api/patients/add\` | Add a new patient |
 
-📌 _Check the full API documentation **[here](#)**_
-
 ---
 
 ## 🐳 **Docker Setup**
 To build and run using Docker:
-\`\`\`bash
+```sh
 docker build -t eyecamp-backend .
 docker run -p 5000:5000 eyecamp-backend
-\`\`\`
+```
 
 ---
 
