@@ -32,6 +32,7 @@
   "homepage": "https://github.com/MurugananthamB/eyecamp-backend#readme",
   "type": "commonjs",
   "dependencies": {
+    "axios": "^1.8.4",
     "bcryptjs": "^3.0.2",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
