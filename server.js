@@ -45,18 +45,18 @@ app.get("/checkRegNo/:regNo", async (req, res) => {
 });
 
 // ✅ Keep Server Awake (Only for free-tier Render)
-const SERVER_URL = process.env.SERVER_URL; // Get from environment
-if (SERVER_URL) {
-  setInterval(() => {
-    https
-      .get(SERVER_URL, (res) => {
-        console.log(`🔄 Keep-alive request sent. Status: ${res.statusCode}`);
-      })
-      .on("error", (err) => {
-        console.error("⚠️ Keep-alive request failed:", err.message);
-      });
-  }, 5 * 60 * 1000); // Every 5 minutes
-}
+// const SERVER_URL = process.env.SERVER_URL; // Get from environment
+// if (SERVER_URL) {
+//   setInterval(() => {
+//     https
+//       .get(SERVER_URL, (res) => {
+//         console.log(`🔄 Keep-alive request sent. Status: ${res.statusCode}`);
+//       })
+//       .on("error", (err) => {
+//         console.error("⚠️ Keep-alive request failed:", err.message);
+//       });
+//   }, 5 * 60 * 1000); // Every 5 minutes
+// }
 
 // ✅ Start Server
 const PORT = process.env.PORT || 5000;
